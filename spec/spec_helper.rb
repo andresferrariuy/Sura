@@ -3,6 +3,12 @@
 require 'capybara/dsl'
 require 'capybara/poltergeist'
 
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app,
+    :phantomjs_options => ['--debug=no', '--load-images=no', '--ignore-ssl-errors=yes', '--ssl-protocol=any',
+    '--web-security=false'], :debug => false)
+end
+
 Capybara.default_driver = :poltergeist
 
 RSpec.configure do |config|
