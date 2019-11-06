@@ -2,6 +2,7 @@
 
 require 'capybara/dsl'
 require 'capybara/poltergeist'
+require 'ci_uy'
 
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app,
