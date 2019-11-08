@@ -85,5 +85,4 @@ RSpec.describe 'INSIS' , js:true do
   
       end
     end
-
 end
