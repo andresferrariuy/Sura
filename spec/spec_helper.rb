@@ -5,6 +5,7 @@ require 'capybara/poltergeist'
 require 'ci_uy'
 require 'faker'
 require 'date_format'
+require 'uy/rut'
 
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app,
