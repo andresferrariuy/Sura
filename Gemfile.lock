@@ -78,6 +78,7 @@ DEPENDENCIES
   ci_uy (= 1.0.1)
   date_format (= 0.3.3)
   faker (= 2.7)
+  launchy (= 2.4.3)
   poltergeist (= 1.18.1)
   rspec (= 3.8)
   rubocop (= 0.75.0)
