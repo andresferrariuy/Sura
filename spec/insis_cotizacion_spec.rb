@@ -125,6 +125,14 @@ RSpec.describe 'These website' do
 
         page.save_and_open_screenshot('clienteSeleccionado.png', full: true) # Same as save_screenshot.
 
+        find('div[id="pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:1:templId:globalCommit"]').trigger('click') #clik en el botón save objet
+        sleep 5
+        page.save_and_open_screenshot('clienteGuardado.png', full: true) # Same as save_screenshot.
+
+        find('div[id="pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:1:templId:globalClose"]').trigger('click') #clik en el botón close, cerrar el popu y cargar el objeto de cobertura en la cotiza
+        sleep 5
+        page.save_and_open_screenshot('clienteCargadoEnCotizax.png', full: true) # Same as save_screenshot.
+
       end
   end
 end
