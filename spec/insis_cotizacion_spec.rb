@@ -9,6 +9,8 @@ RSpec.describe 'These website' do
 
     end
       pidCLient = 'CI343333'
+      sumaAsegurada = 50000
+      prima = '251,1944818304'
       it 'Nueva Cotiza' do
         fill_in 'pt1:pt_s2:usrname::content', with: 'insis_rauld' #Ingresa usuario
         fill_in 'pt1:pt_s2:pswd::content', with: 'insis12345' #Ingresa contraseña
@@ -48,19 +50,19 @@ RSpec.describe 'These website' do
 
         find('a[accesskey="A"]').click #Click en crear agente
         sleep 5
-        page.save_and_open_screenshot('agregar agente.png', full: true) # Same as save_screenshot.
+    #    page.save_and_open_screenshot('agregar agente.png', full: true) # Same as save_screenshot.
 
         if ! expect(page.find_by_id('pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id3971720:0:pt1:tabl:0:it2::content')).to have_text('6010001283') # Busca en el grid de agentes si existe agente selccionado
           # Seleccionar agente
 
           find_by_id('pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id3971720:0:pt1:tabl:0:clientLOVLink').trigger('click') #Click en crear agente
           sleep 5
-          page.save_and_open_screenshot('pantallaAgente.png', full: true) # Same as save_screenshot.
+    #      page.save_and_open_screenshot('pantallaAgente.png', full: true) # Same as save_screenshot.
 
           fill_in 'pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id3971720:0:pt1:rgTem2:1:zdbit2::content', with: '%victoria%' #Ingresa texto de búsqueda de agente
           find_by_id('pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id3971720:0:pt1:rgTem2:1:zdbit2::content').native.send_keys(:return) # Presionar la tecla enter para iniciar la búsqueda
           sleep 5
-          page.save_and_open_screenshot('listadoDeAgentes.png', full: true) # Same as save_screenshot.
+    #      page.save_and_open_screenshot('listadoDeAgentes.png', full: true) # Same as save_screenshot.
 
           find_by_id('pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id3971720:0:pt1:rgTem2:1:resultTableId:0:zdbot1').click #Click en grid para seleccionar agente encontrado
           find('div[id="pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id3971720:0:pt1:rgTem2:1:okBtn"]').click #Click en crear ok para cargar el agente encontrado
@@ -72,66 +74,109 @@ RSpec.describe 'These website' do
           sleep 5
 
         end
-        page.save_and_open_screenshot('agenteCargado.png', full: true) # Same as save_screenshot.
+    #    page.save_and_open_screenshot('agenteCargado.png', full: true) # Same as save_screenshot.
 
         find('a[id="pageTemplate:mainRegion:1:r_j_id23171654:0:spltr_j_id17811422::i"]').trigger('click') #Click en abrir panel
 
         #crear nueva cotización
         find('div[id="pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id17941675:0:pt1:crEngQuoteBtn"]').trigger('click') #Click en crear en botón crear nueva cotiza
         sleep 5
-        page.save_and_open_screenshot('crearNuevaCotiza.png', full: true) # Same as save_screenshot.
+  #      page.save_and_open_screenshot('crearNuevaCotiza.png', full: true) # Same as save_screenshot.
 
         # Seleccionar producto y crear cotización
         fill_in 'pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id17941675:0:pt1:rgTem2:1:mvfit1::content', with: '4104' #Ingresa texto de búsqueda de producto
         find_by_id('pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id17941675:0:pt1:rgTem2:1:mvfit1::content').native.send_keys(:return) # Presionar la tecla enter para iniciar la búsqueda
         sleep 5
-        page.save_and_open_screenshot('productoEncontrado.png', full: true) # Same as save_screenshot.
+  #      page.save_and_open_screenshot('productoEncontrado.png', full: true) # Same as save_screenshot.
 
         find('table[_selstate="{}"]').click #Click en crear ok para cargar el agente encontrado
         find('div[id="pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id17941675:0:pt1:rgTem2:1:okBtn"]').click #Click en crear ok para cargar el agente encontrado
         sleep 5
-        page.save_and_open_screenshot('cotizacionCreada.png', full: true) # Same as save_screenshot.
+  #      page.save_and_open_screenshot('cotizacionCreada.png', full: true) # Same as save_screenshot.
 
         find('button[accesskey="S"]').click  #Click en siguiente a pantalla cotización general
         sleep 5
-        page.save_and_open_screenshot('pantallaCotizacionGeneral.png', full: true) # Same as save_screenshot.
+  #      page.save_and_open_screenshot('pantallaCotizacionGeneral.png', full: true) # Same as save_screenshot.
 
         find('button[accesskey="S"]').click  #Click en siguiente a pantalla de pantallaCoberturas
         sleep 5
-        page.save_and_open_screenshot('pantallaCoberturas.png', full: true) # Same as save_screenshot.
+  #      page.save_and_open_screenshot('pantallaCoberturas.png', full: true) # Same as save_screenshot.
 
         # abrir pantalla de selección de objetos de cobertura
 
         find_by_id('pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:add').click #Click en botón agregar objeto Cobertura
-
         sleep 5
-        page.save_and_open_screenshot('pantallaSelecionarObjetoCobertura.png', full: true) # Same as save_screenshot.
+  #      page.save_and_open_screenshot('pantallaSelecionarObjetoCobertura.png', full: true) # Same as save_screenshot.
 
         # Buscar y seleccionar objeto de cobertura
 
         find('a[id="pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:1:templId:details"]').trigger('click') #clik en el botón detalles del objeto de cobertura
         sleep 5
-        page.save_and_open_screenshot('clickBotonDetallesObjetoCobertura.png', full: true) # Same as save_screenshot.
+  #      page.save_and_open_screenshot('clickBotonDetallesObjetoCobertura.png', full: true) # Same as save_screenshot.
 
         fill_in 'pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:1:templId:dynObjTF:1:dynam1:0:formTemplate1:qxmit1::content', with: pidCLient #Ingresa el PID del cliente a buscar
         find_by_id('pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:1:templId:dynObjTF:1:dynam1:0:formTemplate1:qxmit1::content').native.send_keys(:return) # Presionar la tecla enter para iniciar la búsqueda
         sleep 5
-        page.save_and_open_screenshot('clienteEncontrada.png', full: true) # Same as save_screenshot.
+  #     page.save_and_open_screenshot('clienteEncontrada.png', full: true) # Same as save_screenshot.
 
 
         find('span[id="pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:1:templId:dynObjTF:1:dynam1:0:formTemplate1:peopleTable:0:qxmot2"]').click #Click en grid para seleccionar el cliente encontrado
         find_by_id('pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:1:templId:dynObjTF:1:dynam1:0:formTemplate1:okBtn').click #Click botón ok para cargar los detalles del cliente
         sleep 5
-
-        page.save_and_open_screenshot('clienteSeleccionado.png', full: true) # Same as save_screenshot.
+  #      page.save_and_open_screenshot('clienteSeleccionado.png', full: true) # Same as save_screenshot.
 
         find('div[id="pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:1:templId:globalCommit"]').trigger('click') #clik en el botón save objet
-        sleep 5
-        page.save_and_open_screenshot('clienteGuardado.png', full: true) # Same as save_screenshot.
+        sleep 10
+  #      page.save_and_open_screenshot('clienteGuardado.png', full: true) # Same as save_screenshot.
 
-        find('div[id="pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:1:templId:globalClose"]').trigger('click') #clik en el botón close, cerrar el popu y cargar el objeto de cobertura en la cotiza
+        find('div[id="pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:1:templId:globalClose"]').trigger('click') #clik en el botón close, cerrar el popup y cargar el objeto de cobertura en la cotiza
         sleep 5
-        page.save_and_open_screenshot('clienteCargadoEnCotizax.png', full: true) # Same as save_screenshot.
+        page.save_and_open_screenshot('clienteCargadoEnCotiza.png', full: true) # Same as save_screenshot.
+
+        find_by_id('pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:addCover').click #Click en botón agregar Cobertura
+        sleep 5
+        page.save_and_open_screenshot('pantallaSelecionarCobertura.png', full: true) # Same as save_screenshot.
+
+        find_by_id('pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:2:zflpt1:coversTbl:0:zflsbc2::content').click #Click en el check para seleccionar primera cobertura del grid
+
+        find('div[id="pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:2:zflpt1:globalCommit"]').trigger('click') #clik en el botón save para guarar la Cobertura
+        sleep 10
+        page.save_and_open_screenshot('Cobertura guardada.png', full: true) # Same as save_screenshot.
+
+        find('div[id="pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:dynam1:2:zflpt1:globalClose"]').trigger('click') #clik en el botón close, cerrar el popup y cargar la cobertura en la cotiza
+        sleep 5
+        page.save_and_open_screenshot('coberturaCargadoEnCotiza.png', full: true) # Same as save_screenshot.
+
+        find('a[id="pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:acrt2:0:edit3"]').trigger('click') #Click en botón editar cobertura para ingresar la SA
+        sleep 5
+        fill_in 'pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:acrt2:0:acrit23::content', with: sumaAsegurada #Ingresa el PID del cliente a buscar
+        page.save_and_open_screenshot('pantallaSelecionarCobertura.png', full: true) # Same as save_screenshot.
+
+        find('div[id="pageTemplate:mainRegion:1:commitBtn_j_id4971179"]').click #Click en botón guardar datos
+        sleep 10
+
+        find('div[id="pageTemplate:mainRegion:1:genericButn_j_id6291864"]').click #Click en botón calcular prima
+        sleep 10
+
+        find('div[id="pageTemplate:mainRegion:1:genericButn_j_id6291864"]').click #Click en botón calcular prima
+        sleep 10
+        page.save_and_open_screenshot('primaCalculada.png', full: true) # Same as save_screenshot.
+
+        expect(page.find_by_id('pageTemplate:mainRegion:1:r_j_id19741547:0:r_j_id561262:0:form:acrt2:0:acrit25::content')).to have_text(prima) #Busca en link Logout para verificar que inició sesión
+
+        find('button[accesskey="r"]').click  #Click en siguiente a pantalla de pantallaCoberturas
+        sleep 5
+
+        find('button[accesskey="r"]').click  #Click en siguiente a pantalla de pantallaCoberturas
+        sleep 5
+        page.save_and_open_screenshot('pantallaCotizacionCompromiso.png', full: true) # Same as save_screenshot.
+
+        find('div[id="pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id17941675:0:pt1:quoteToClientBtn"]').trigger('click') #Click en botón cuota al cliente
+        sleep 5
+
+        find('div[id="pageTemplate:mainRegion:1:r_j_id23171654:0:r_j_id17941675:0:pt1:activateQuoteBtn"]').trigger('click') #Click en botón cuota al cliente
+        sleep 10
+        page.save_and_open_screenshot('cotizacionAceptada.png', full: true) # Same as save_screenshot.
 
       end
   end
